@@ -1,20 +1,9 @@
 const { http, filter, date, message } = require('./lib')
 const { config } = require('./config')
 
-const fetchData = async () => {
-  return http({
-    method: 'GET',
-    url: config.API_URL,
-    params: {
-      appid: config.APP_ID,
-      q: config.CITY
-    }
-  })
-}
-
 const start = async () => {
   try {
-    const { data: { list } } = await fetchData()
+    const { data: { list } } = await http.fetchData()
 
     const nextFiveDays = filter.getNexFiveDays({ list })
 
