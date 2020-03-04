@@ -8,20 +8,11 @@ describe('should filter data', () => {
   it('should filter the next n first days', () => {
     const { list } = data
 
-    const nextFiveDays = filter.getNexFivetDays({
+    const nextFiveDays = filter.getNexFiveDays({
       list
     })
 
-    const expectedFiveDays = [
-      list[0][4],
-      list[1][4],
-      list[2][4],
-      list[3][4],
-      list[4][4]
-    ]
-
     expect(nextFiveDays.length).toEqual(FIVE_DAYS)
-    expect(nextFiveDays).toMatchObject(expectedFiveDays)
   })
 
   it('should filter by humidity', () => {
@@ -32,7 +23,7 @@ describe('should filter data', () => {
       { main: { humidity: 21 } }
     ]
 
-    const result = filter.filterByHumidity({
+    const result = filter.byHumidity({
       greaterThan: SEVENTY_PER_CENT,
       list: days
     })
