@@ -2,44 +2,26 @@ const { filter } = require('../../lib')
 const { data } = require('./sampleData')
 
 const FIVE_DAYS = 5
-const SIX_DAYS = 6
 const SEVENTY_PER_CENT = 70
 
 describe('should filter data', () => {
   it('should filter the next n first days', () => {
     const { list } = data
 
-    const nextFiveDays = filter.getNextDays({
-      list,
-      days: FIVE_DAYS
-    })
-
-    const nextSixDays = filter.getNextDays({
-      list,
-      days: SIX_DAYS
+    const nextFiveDays = filter.getNexFivetDays({
+      list
     })
 
     const expectedFiveDays = [
-      list[0],
-      list[1],
-      list[2],
-      list[3],
-      list[4]
-    ]
-
-    const expectedSixDays = [
-      list[0],
-      list[1],
-      list[2],
-      list[3],
-      list[4],
-      list[5]
+      list[0][4],
+      list[1][4],
+      list[2][4],
+      list[3][4],
+      list[4][4]
     ]
 
     expect(nextFiveDays.length).toEqual(FIVE_DAYS)
-    expect(nextSixDays.length).toEqual(SIX_DAYS)
     expect(nextFiveDays).toMatchObject(expectedFiveDays)
-    expect(nextSixDays).toMatchObject(expectedSixDays)
   })
 
   it('should filter by humidity', () => {
