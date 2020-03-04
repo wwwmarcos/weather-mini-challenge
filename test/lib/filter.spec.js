@@ -19,8 +19,27 @@ describe('should filter data', () => {
       days: SIX_DAYS
     })
 
+    const expectedFiveDays = [
+      list[0],
+      list[1],
+      list[2],
+      list[3],
+      list[4]
+    ]
+
+    const expectedSixDays = [
+      list[0],
+      list[1],
+      list[2],
+      list[3],
+      list[4],
+      list[5]
+    ]
+
     expect(nextFiveDays.length).toEqual(FIVE_DAYS)
     expect(nextSixDays.length).toEqual(SIX_DAYS)
+    expect(nextFiveDays).toMatchObject(expectedFiveDays)
+    expect(nextSixDays).toMatchObject(expectedSixDays)
   })
 
   it('should filter by humidity', () => {
@@ -37,5 +56,15 @@ describe('should filter data', () => {
     })
 
     expect(result.length).toEqual(2)
+
+    expect(result).toMatchObject([
+      { main: { humidity: 94 } },
+      { main: { humidity: 71 } }
+    ])
+
+    expect(result).not.toMatchObject([
+      { main: { humidity: 70 } },
+      { main: { humidity: 21 } }
+    ])
   })
 })
