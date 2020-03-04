@@ -16,7 +16,8 @@
     "env": [ "jest" ]
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
